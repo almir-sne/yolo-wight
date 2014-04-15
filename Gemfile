@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.1.0'
-gem 'sqlite3', group: :development
 gem 'pg', group: :production
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assetszz
