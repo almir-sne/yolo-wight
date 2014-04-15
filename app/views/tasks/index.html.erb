@@ -1,6 +1,18 @@
 <div class="container">
   <h1> To do list </h1>
 
+  <% if @task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+        <% @task.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div class="well">
     <p> <%= pluralize(@done_tasks_num, 'task') %> done <%= link_to "click here to view", tasks_done_path %> </p>
   </div>
@@ -10,10 +22,16 @@
 
 <nav class="navbar navbar-default navbar-fixed-bottom  task-form" role="navigation">
   <div class="container">
-    <%= form_for Task.new do |f| %>
-      <%= f.text_field :description, placeholder: "Type your task", style: "width: 70%" %>
-      <%= f.text_field :start, placeholder: "Pick a date" %>
-      <%= f.submit class: "btn btn-primary" %>
-    <% end %>
+    <%= form_for @task do |f| %>
+      <div class="col-md-8">
+        <%= f.text_field :description, placeholder: "Type your task", style: "width: 100%" %>
+      </div>
+      <div class="col-md-2">
+        <%= f.text_field :start, placeholder: "Pick a date" %>
+      </div>
+      <div class="col-md-2">
+        <%= f.submit class: "btn btn-primary" %>
+        </div>
+      <% end %>
   </div>
 </nav>
