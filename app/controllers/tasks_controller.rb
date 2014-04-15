@@ -3,6 +3,12 @@ class TasksController < ApplicationController
   
   def index
     @tasks = Task.todo
+    @done_tasks_num = Task.done.count
+  end
+  
+  def done_tasks
+    @tasks = Task.done
+    @todo_tasks_num = Task.todo.count
   end
   
   def create
@@ -28,7 +34,7 @@ class TasksController < ApplicationController
   end
   
   def done
-    @task.done = true
+    @task.done = params[:done]
     if @task.save
       redirect_to tasks_path, notice: 'Task marked as done.'
     else
@@ -36,12 +42,12 @@ class TasksController < ApplicationController
     end
   end
   
-    private
-    def set_task
-      @task = Task.find(params[:id])
-    end
-
-    def task_params
-      params.require(:task).permit(:description, :start)
-    end
+  private
+  def set_task
+    @task = Task.find(params[:id])
   end
+
+  def task_params
+    params.require(:task).permit(:description, :start)
+  end
+end

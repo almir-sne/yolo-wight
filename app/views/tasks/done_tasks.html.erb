@@ -1,0 +1,8 @@
+<div class="container">
+  <h1> Done Tasks </h1>
+  <div class="well">
+    <p> <%= pluralize(@todo_tasks_num, 'task') %> to do <%= link_to "click here to view", tasks_path %> </p>
+  </div>
+
+  <%= render partial: 'list', locals: {tasks: @tasks, mark_done: false} %>
+</div>

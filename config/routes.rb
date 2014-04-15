@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     end
   end
   
+  get 'tasks/done'  => 'tasks#done_tasks'
+  
   root 'tasks#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

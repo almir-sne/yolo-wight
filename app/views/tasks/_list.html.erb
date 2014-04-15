@@ -1,0 +1,27 @@
+<% unless tasks.blank? %>
+  <p> Click on a field to edit </p>
+  <table id="task-list">
+    <% tasks.each do |t| %>
+      <tr>
+        <td class="links">
+          <%= link_to '<i class="fa fa-check green-link"></i>'.html_safe, done_task_path(t, done: mark_done), method: 'post' %>
+          <%= link_to '<i class="fa fa-trash-o red-link"></i>'.html_safe, t, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+        <td class="description"> <%= best_in_place t, :description, :type => :input %> </td>
+        <td> <%= best_in_place t, :start, :type => :date %> </td>
+      </tr>
+    <% end %> 
+  </table>
+<% else %>
+  <div class="well">
+    <p> No tasks found. </p>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  $.datepicker.setDefaults({
+    dateFormat: "dd/mm/yy"
+  });
+  $("#task_start").datepicker();
+  $(".best_in_place").best_in_place();
+</script>

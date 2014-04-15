@@ -10,6 +10,10 @@ table#task-list .links {
     width: 10%
 }
 
+table#task-list .description {
+    width: 70%
+}
+
 .green-link, .green-link:visited {
     color:#33CF33
 }
@@ -29,4 +33,8 @@ table#task-list .links {
 .task-form {
     padding-top: 10px;
     background-color: #F5FF7E;
+}
+
+.well {
+    background-color: #F5FF7E
 }

@@ -1,20 +1,12 @@
 <div class="container">
   <h1> To do list </h1>
 
-  <table id="task-list">
-    <% @tasks.each do |t| %>
-      <tr>
-        <td  class="links">
-          <%= link_to '<i class="fa fa-check green-link"></i>'.html_safe, done_task_path(t), method: 'post' %>
-          <%= link_to '<i class="fa fa-trash-o red-link"></i>'.html_safe, t, method: :delete, data: { confirm: 'Are you sure?' } %>
-        </td>
-        <td> <%= t.description %> </td>
-        <td> <%= t.start %> </td>
-      </tr>
-    <% end %> 
-  </table>
-</div>
+  <div class="well">
+    <p> <%= pluralize(@done_tasks_num, 'task') %> done <%= link_to "click here to view", tasks_done_path %> </p>
+  </div>
 
+  <%= render partial: 'list', locals: {tasks: @tasks, mark_done: true} %>
+</div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom  task-form" role="navigation">
   <div class="container">
@@ -25,7 +17,3 @@
     <% end %>
   </div>
 </nav>
-
-<script type="text/javascript">
-  $("#task_start").datepicker({dateFormat: "dd/mm/yy"});
-</script>
