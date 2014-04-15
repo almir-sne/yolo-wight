@@ -1,0 +1,32 @@
+body {
+    background-color: #F7FF96;
+}
+
+table#task-list {
+    width: 100%
+}
+
+table#task-list .links {
+    width: 10%
+}
+
+.green-link, .green-link:visited {
+    color:#33CF33
+}
+
+.green-link:hover {
+    color:#2E9C2E
+}
+
+.red-link, .red-link:visited {
+    color:#FF3838
+}
+
+.red-link:hover {
+    color:#BD3B3B
+}
+
+.task-form {
+    padding-top: 10px;
+    background-color: #F5FF7E;
+}
